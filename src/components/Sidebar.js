@@ -56,16 +56,16 @@ const Sidebar = () => {
               <path
                 d='M6 1V11'
                 stroke='#868686'
-                stroke-width='1.5'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='1.5'
+                strokeLinecap='round'
+                strokeLinejoin='round'
               />
               <path
                 d='M1 6H11'
                 stroke='#868686'
-                stroke-width='1.5'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='1.5'
+                strokeLinecap='round'
+                strokeLinejoin='round'
               />
             </svg>
           </i>

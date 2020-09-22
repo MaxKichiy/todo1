@@ -7,3 +7,160 @@
   display: flex;
   box-shadow: 0px 1px 100px 0px #ccc;
 }
+
+.main__title {
+  font-family: $font-name-secondary;
+  font-size: 32px;
+  cursor: pointer;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f2f2f2;
+
+  &:hover {
+    svg {
+      path {
+        fill: #bbb;
+      }
+    }
+  }
+
+  i {
+    margin-left: 20px;
+    cursor: pointer;
+    svg {
+      path {
+        fill: #dfdfdf;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: #bbb;
+        }
+      }
+    }
+  }
+}
+
+.page-main__main {
+  padding: 60px;
+}
+h2 {
+  padding: 0;
+  margin: 0;
+  color: #64c4ed;
+}
+
+.main__list {
+  margin-top: 30px;
+  .main__list-item {
+    margin-top: 20px;
+    position: relative;
+    font-family: 'Lato';
+    font-weight: 700;
+    &:hover {
+      .main__list-item--confirm {
+        display: inline-block;
+      }
+      .main__list-item--edit {
+        display: inline-block;
+      }
+    }
+    input {
+      display: none;
+    }
+    label {
+      &:hover {
+        &::before {
+          position: absolute;
+          left: 0;
+          top: -2px;
+          content: '';
+          width: 20px;
+          height: 20px;
+          border: none;
+          border-radius: 50%;
+          border: 2px solid #f2f2f2;
+        }
+        &::after {
+          position: absolute;
+          left: 2px;
+          top: 0px;
+          content: '';
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          background: none;
+          background-color: #f2f2f2;
+          background-image: url('../assets/okay.svg');
+          background-repeat: no-repeat;
+          background-position: 4px 5px;
+        }
+      }
+      cursor: pointer;
+      margin-left: 35px;
+      &::before {
+        position: absolute;
+        left: 0;
+        top: -2px;
+        content: '';
+        width: 20px;
+        height: 20px;
+
+        border: 2px solid #e8e8e8;
+        border-radius: 50%;
+      }
+    }
+    input:checked + label {
+      &::before {
+        border: none;
+      }
+
+      &::after {
+        position: absolute;
+        left: 2px;
+        top: 0px;
+        content: '';
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background: none;
+        background-color: #4dd599;
+        background-image: url('../assets/okay.svg');
+        background-repeat: no-repeat;
+        background-position: 4px 5px;
+      }
+    }
+  }
+}
+
+.main__list-item--edit {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  margin-left: 10px;
+  &:hover {
+    svg {
+      path {
+        fill: #bbb;
+      }
+    }
+  }
+}
+
+.main__list-item--confirm {
+  display: none;
+  position: absolute;
+  background-color: #dfdfdf;
+  border-radius: 50%;
+  margin-left: 10px;
+
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+  }
+
+  &:hover {
+    background-color: #4dd599;
+  }
+}
