@@ -1,7 +1,18 @@
-import React from 'react';
-import close from '../assets/close.svg';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchColors } from '../redux/actions/color';
+import { fetchingList } from '../redux/actions/list';
+import { fetchingTasks } from '../redux/actions/tasks';
+import SidebarList from './SidebarList';
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchingList());
+    dispatch(fetchColors());
+    dispatch(fetchingTasks());
+  }, []);
   return (
     <section className='page-main__sidebar sidebar'>
       <div className='sidebar__wrapper'>
@@ -22,28 +33,7 @@ const Sidebar = () => {
           </i>
           Все задачи
         </p>
-        <ul className='sidebar__list '>
-          <li className='sidebar__list-item'>
-            <i className='circle circle--green'></i>Покупки
-            <i className='close-button'>
-              <img src={close} alt='' />
-            </i>
-          </li>
-          <li className='sidebar__list-item sidebar__list-item--active'>
-            <i className='circle circle--blue'></i>
-            Фронтенд
-            <i className='close-button'>
-              <img src={close} alt='' />
-            </i>
-          </li>
-          <li className='sidebar__list-item'>
-            <i className='circle circle--rose'></i>
-            Фильмы и сериалы
-            <i className='close-button'>
-              <img src={close} alt='' />
-            </i>
-          </li>
-        </ul>
+        <SidebarList />
         <button className='sidebar__button'>
           <i>
             <svg
