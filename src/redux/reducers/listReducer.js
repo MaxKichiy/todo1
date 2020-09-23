@@ -11,6 +11,11 @@ const listReducer = (state = initialState, action) => {
         ...state,
         list: action.payload,
       };
+    case actionTypes.ADD_LIST_ITEM:
+      return {
+        ...state,
+        list: [...state.list, action.payload],
+      };
     default:
       return state;
   }
