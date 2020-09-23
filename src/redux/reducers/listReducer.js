@@ -16,6 +16,14 @@ const listReducer = (state = initialState, action) => {
         ...state,
         list: [...state.list, action.payload],
       };
+    case actionTypes.CHANGE_TITLE:
+      return {
+        ...state,
+        list: [
+          ...state.list.filter((el) => el.id !== action.payload.id),
+          action.payload,
+        ],
+      };
     case actionTypes.DELETE_LIST_ITEM:
       return {
         ...state,

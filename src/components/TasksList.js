@@ -1,11 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
+import close from '../assets/close.svg';
+import { deleteTask } from '../redux/actions/tasks';
 const TasksList = ({ activeId, tasks, lists }) => {
   const tlist = tasks.filter((el) => activeId === el.listId);
+  const dispatch = useDispatch();
 
+  const deleteTaskHandler = (id) => {
+    dispatch(deleteTask(id));
+  };
   const taskList = (activeId ? tlist : tasks).map((el) => (
     <li key={el.id} className='main__list-item'>
-      <input id={el.id} type='checkbox' placeholder='Изучить JavaScript' />
+      <input id={el.id} type='checkbox' placeholder={el.text} />
       <label htmlFor={el.id}>{el.text}</label>
       <i className='main__list-item--edit'>
         <svg
@@ -20,6 +27,9 @@ const TasksList = ({ activeId, tasks, lists }) => {
             fill='#DFDFDF'
           />
         </svg>
+      </i>
+      <i onClick={() => deleteTaskHandler(el.id)} className='close-button'>
+        <img src={close} alt='' />
       </i>
       {/* <i className='main__list-item--confirm '>
         <svg

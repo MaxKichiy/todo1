@@ -8,6 +8,12 @@
   box-shadow: 0px 1px 100px 0px #ccc;
 }
 
+.page-main__main {
+  padding: 60px 60px 60px 20px;
+  padding-bottom: 0;
+  max-height: 500px;
+  overflow: auto;
+}
 .main__wrapper {
   width: 420px;
 }
@@ -43,10 +49,6 @@
     }
   }
 }
-
-.page-main__main {
-  padding: 60px;
-}
 h2 {
   padding: 0;
   margin: 0;
@@ -60,6 +62,7 @@ h2 {
     position: relative;
     font-family: 'Lato';
     font-weight: 700;
+    padding-left: 40px;
     &:hover {
       .main__list-item--confirm {
         display: inline-block;
@@ -75,7 +78,7 @@ h2 {
       &:hover {
         &::before {
           position: absolute;
-          left: 0;
+          left: 40px;
           top: -2px;
           content: '';
           width: 20px;
@@ -86,7 +89,7 @@ h2 {
         }
         &::after {
           position: absolute;
-          left: 2px;
+          left: 42px;
           top: 0px;
           content: '';
           border-radius: 50%;
@@ -103,7 +106,7 @@ h2 {
       margin-left: 35px;
       &::before {
         position: absolute;
-        left: 0;
+        left: 40px;
         top: -2px;
         content: '';
         width: 20px;
@@ -113,6 +116,7 @@ h2 {
         border-radius: 50%;
       }
     }
+
     input:checked + label {
       &::before {
         border: none;
@@ -133,6 +137,22 @@ h2 {
         background-position: 4px 5px;
       }
     }
+    .close-button {
+      display: none;
+    }
+    &:hover {
+      .close-button {
+        display: inline-block;
+        position: absolute;
+        left: 20px;
+        margin-top: -1px;
+        cursor: pointer;
+        opacity: 0.2;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
   }
 }
 
@@ -140,7 +160,8 @@ h2 {
   display: none;
   position: absolute;
   cursor: pointer;
-  margin-left: 10px;
+  left: 20px;
+  margin-left: -20px;
   &:hover {
     svg {
       path {
@@ -187,5 +208,23 @@ h2 {
     &:hover {
       background-color: darken(#f4f6f8, 5%);
     }
+  }
+}
+.main__title-input {
+  display: flex;
+  position: relative;
+}
+.main__title-confirm {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background-color: darken(#ccc, 10%);
+  }
+  svg {
+    width: 16px;
   }
 }

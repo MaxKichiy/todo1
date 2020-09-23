@@ -1,10 +1,14 @@
-.sidebar__wrapper {
+.page-main__sidebar {
   background-color: #f4f6f8;
   width: 200px;
   min-height: 390px;
   padding: 48px 20px;
   padding-left: 20px;
   box-sizing: border-box;
+}
+
+.sidebar__wrapper {
+  margin: 0 auto;
 }
 
 .sidebar__text {

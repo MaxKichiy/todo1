@@ -16,6 +16,11 @@ const removeList = (listId) => ({
   payload: listId,
 });
 
+const setTitle = (newTitle) => ({
+  type: actionTypes.CHANGE_TITLE,
+  payload: newTitle,
+});
+
 export const fetchingList = () => (dispatch) => {
   axios
     .get('http://localhost:3003/lists')
@@ -33,4 +38,10 @@ export const deleteListItem = (itemId) => (dispatch) => {
   axios
     .delete(`http://localhost:3003/lists/${itemId}`)
     .then((res) => dispatch(removeList(itemId)));
+};
+
+export const changeTitle = (newTitle, titleId) => (dispatch) => {
+  axios
+    .patch(`http://localhost:3003/lists/${titleId}`, newTitle)
+    .then(({ data }) => dispatch(setTitle(data)));
 };
