@@ -16,13 +16,16 @@
 
   padding: 14px 12px;
 
-  &--active {
-    background-color: #fff;
-    border-radius: 10px;
-  }
   &:hover {
     border-radius: 10%;
     background-color: lighten($color: #f4f6f8, $amount: 1%);
+  }
+  &--active {
+    background-color: #fff;
+    border-radius: 10px;
+    &:hover {
+      background-color: #fff;
+    }
   }
 
   cursor: pointer;
@@ -53,7 +56,7 @@
     }
     &:hover {
       border-radius: 10%;
-      background-color: lighten($color: #f4f6f8, $amount: 1%);
+      background-color: lighten($color: #f4f6f8, $amount: 2%);
       .close-button {
         display: inline-block;
         position: absolute;
@@ -70,6 +73,9 @@
     &--active {
       background-color: #fff;
       border-radius: 10px;
+      &:hover {
+        background-color: #fff;
+      }
     }
   }
 }

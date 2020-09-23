@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchingList, postListItem } from '../redux/actions/list';
+import { postListItem } from '../redux/actions/list';
 import SidebarModalColors from './SidebarModalColors';
 
 const SidebarModal = ({ onClose }) => {

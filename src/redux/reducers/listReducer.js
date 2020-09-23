@@ -16,6 +16,11 @@ const listReducer = (state = initialState, action) => {
         ...state,
         list: [...state.list, action.payload],
       };
+    case actionTypes.DELETE_LIST_ITEM:
+      return {
+        ...state,
+        list: state.list.filter((list) => list.id !== action.payload),
+      };
     default:
       return state;
   }

@@ -5,11 +5,17 @@ import { fetchingList } from '../redux/actions/list';
 import { fetchingTasks } from '../redux/actions/tasks';
 import SidebarList from './SidebarList';
 import SidebarModal from './SidebarModal';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 
 const Sidebar = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [activeFolder, setActiveFolder] = useState(null);
   const dispatch = useDispatch();
+
+  const onActiveHandler = (id) => {
+    setActiveFolder(id);
+    console.log(id);
+  };
 
   useEffect(() => {
     dispatch(fetchingColors());
@@ -26,7 +32,12 @@ const Sidebar = () => {
   return (
     <section className='page-main__sidebar sidebar'>
       <div className='sidebar__wrapper'>
-        <p className='sidebar__text'>
+        <p
+          onClick={() => setActiveFolder(null)}
+          className={classNames('sidebar__text', {
+            'sidebar__text--active': activeFolder === null,
+          })}
+        >
           <i>
             <svg
               width='14'
@@ -43,7 +54,10 @@ const Sidebar = () => {
           </i>
           Все задачи
         </p>
-        <SidebarList />
+        <SidebarList
+          onActiveHandler={onActiveHandler}
+          activeFolderId={activeFolder}
+        />
         <button onClick={openModalHandler} className='sidebar__button'>
           <i>
             <svg
