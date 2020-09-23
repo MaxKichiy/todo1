@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 function App() {
+  const [activeFolderIndex, setActiveFolderIndex] = useState(null);
+
   return (
     <main className='page-main'>
-      <Sidebar />
-      <Main />
+      <Sidebar
+        activeFolderIndex={activeFolderIndex}
+        setActiveFolderIndex={setActiveFolderIndex}
+      />
+      <Main activeFolderIndex={activeFolderIndex} />
     </main>
   );
 }

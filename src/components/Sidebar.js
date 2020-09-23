@@ -7,14 +7,12 @@ import SidebarList from './SidebarList';
 import SidebarModal from './SidebarModal';
 import classNames from 'classnames';
 
-const Sidebar = () => {
+const Sidebar = ({ activeFolderIndex, setActiveFolderIndex }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [activeFolder, setActiveFolder] = useState(null);
   const dispatch = useDispatch();
 
   const onActiveHandler = (id) => {
-    setActiveFolder(id);
-    console.log(id);
+    setActiveFolderIndex(id);
   };
 
   useEffect(() => {
@@ -33,9 +31,9 @@ const Sidebar = () => {
     <section className='page-main__sidebar sidebar'>
       <div className='sidebar__wrapper'>
         <p
-          onClick={() => setActiveFolder(null)}
+          onClick={() => setActiveFolderIndex(null)}
           className={classNames('sidebar__text', {
-            'sidebar__text--active': activeFolder === null,
+            'sidebar__text--active': activeFolderIndex === null,
           })}
         >
           <i>
@@ -56,7 +54,7 @@ const Sidebar = () => {
         </p>
         <SidebarList
           onActiveHandler={onActiveHandler}
-          activeFolderId={activeFolder}
+          activeFolderId={activeFolderIndex}
         />
         <button onClick={openModalHandler} className='sidebar__button'>
           <i>

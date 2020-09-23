@@ -3,4 +3,8 @@
   background-color: #4dd599;
   color: #ffffff;
   padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: darken(#4dd599, 10%);
+  }
 }

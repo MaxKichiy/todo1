@@ -8,6 +8,9 @@
   box-shadow: 0px 1px 100px 0px #ccc;
 }
 
+.main__wrapper {
+  width: 420px;
+}
 .main__title {
   font-family: $font-name-secondary;
   font-size: 32px;
@@ -162,5 +165,27 @@ h2 {
 
   &:hover {
     background-color: #4dd599;
+  }
+}
+
+.main {
+  .text-input {
+    margin-top: 20px;
+    height: 38px;
+  }
+
+  .button {
+    width: 145px;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-right: 5px;
+  }
+  .button--grey {
+    width: 90px;
+    background-color: #f4f6f8;
+    color: rgba(156, 156, 156, 1);
+    &:hover {
+      background-color: darken(#f4f6f8, 5%);
+    }
   }
 }
