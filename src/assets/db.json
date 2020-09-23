@@ -7,7 +7,7 @@
     },
     {
       "id": 2,
-      "name": "Покупки",
+      "name": "Фронтенд",
       "colorId": 4
     },
     {
@@ -24,16 +24,6 @@
       "id": 5,
       "name": "Личное",
       "colorId": 1
-    },
-    {
-      "name": "Отличное",
-      "colorId": 7,
-      "id": 6
-    },
-    {
-      "name": "Нестоит",
-      "colorId": 5,
-      "id": 7
     }
   ],
   "tasks": [
@@ -47,13 +37,13 @@
       "id": 2,
       "listId": 2,
       "text": "Изучить паттерны проектирования",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
+      "completed": false
     },
     {
       "id": 4,
@@ -68,27 +58,21 @@
       "id": 10
     },
     {
-      "listId": 6,
-      "text": "Привет",
-      "completed": false,
-      "id": 11
-    },
-    {
       "listId": 5,
       "text": "Обед",
-      "completed": false,
+      "completed": true,
       "id": 12
     },
     {
       "listId": 1,
       "text": "Банан",
-      "completed": false,
+      "completed": true,
       "id": 13
     },
     {
       "listId": 1,
       "text": "Апельсины",
-      "completed": false,
+      "completed": true,
       "id": 14
     },
     {

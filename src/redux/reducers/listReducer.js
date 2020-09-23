@@ -19,10 +19,12 @@ const listReducer = (state = initialState, action) => {
     case actionTypes.CHANGE_TITLE:
       return {
         ...state,
-        list: [
-          ...state.list.filter((el) => el.id !== action.payload.id),
-          action.payload,
-        ],
+        list: state.list.map((el) => {
+          if (el.id === action.payload.id) {
+            el.name = action.payload.name;
+          }
+          return el;
+        }),
       };
     case actionTypes.DELETE_LIST_ITEM:
       return {

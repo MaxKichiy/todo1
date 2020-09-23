@@ -22,6 +22,16 @@ const taskReducer = (state = initialState, action) => {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload),
       };
+    case actionTypes.TASK_DONE:
+      return {
+        ...state,
+        tasks: state.tasks.map((task) => {
+          if (task.id === action.payload.id) {
+            task.completed = action.payload.completed;
+          }
+          return task;
+        }),
+      };
     default:
       return state;
   }

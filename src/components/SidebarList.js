@@ -8,6 +8,7 @@ import { deleteListItem } from '../redux/actions/list';
 const SidebarList = ({ onActiveHandler, activeFolderId }) => {
   const disapatch = useDispatch();
   const list = useSelector((state) => state.list.list);
+  const tasks = useSelector((state) => state.tasks.tasks);
   const listColor = useSelector((state) => state.colors.colors);
 
   const listDone =
@@ -24,10 +25,12 @@ const SidebarList = ({ onActiveHandler, activeFolderId }) => {
       >
         <i
           className={`circle circle--${
+            listColor &&
             listColor.filter((color) => color.id === el.colorId)[0].name
           }`}
         ></i>
         {el.name}
+        {`(${tasks.filter((task) => task.listId === el.id).length})`}
         <i
           onClick={() => disapatch(deleteListItem(el.id))}
           className='close-button'

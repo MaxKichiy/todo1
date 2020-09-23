@@ -16,6 +16,10 @@ const removeTask = (taskId) => ({
   type: actionTypes.REMOVE_TASK,
   payload: taskId,
 });
+const onCheck = (taskId) => ({
+  type: actionTypes.TASK_DONE,
+  payload: taskId,
+});
 export const fetchingTasks = () => (dispatch) => {
   axios
     .get('http://localhost:3003/tasks')
@@ -33,4 +37,10 @@ export const deleteTask = (taskId) => (dispatch) => {
   axios.delete(`http://localhost:3003/tasks/${taskId}`).then((res) => {
     dispatch(removeTask(taskId));
   });
+};
+
+export const taskDone = (obj) => (dispatch) => {
+  axios
+    .patch(`http://localhost:3003/tasks/${obj.id}`, obj)
+    .then(({ data }) => dispatch(onCheck(obj)));
 };

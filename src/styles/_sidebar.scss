@@ -61,6 +61,7 @@
     &:hover {
       border-radius: 10%;
       background-color: lighten($color: #f4f6f8, $amount: 2%);
+      transition: background-color 0.25s ease-in-out;
       .close-button {
         display: inline-block;
         position: absolute;
