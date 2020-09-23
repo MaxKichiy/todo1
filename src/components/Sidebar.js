@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchColors } from '../redux/actions/color';
+import { fetchingColors } from '../redux/actions/color';
 import { fetchingList } from '../redux/actions/list';
 import { fetchingTasks } from '../redux/actions/tasks';
 import SidebarList from './SidebarList';
+import SidebarModalColors from './SidebarModalColors';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchingColors());
     dispatch(fetchingList());
-    dispatch(fetchColors());
     dispatch(fetchingTasks());
-  }, []);
+  }, [dispatch]);
+
   return (
     <section className='page-main__sidebar sidebar'>
       <div className='sidebar__wrapper'>
@@ -68,20 +70,7 @@ const Sidebar = () => {
               type='text'
               placeholder='Название папки'
             />
-            <ul className='sidebar__modal-colors'>
-              <li className='sidebar__modal-color'>
-                <i className='circle circle--green'></i>
-              </li>
-              <li className='sidebar__modal-color'>
-                <i className='circle circle--green'></i>
-              </li>
-              <li className='sidebar__modal-color'>
-                <i className='circle circle--blue'></i>
-              </li>
-              <li className='sidebar__modal-color'>
-                <i className='circle circle--rose'></i>
-              </li>
-            </ul>
+            <SidebarModalColors />
             <button className='sidebar__modal-button button'>Добавить</button>
             <button className='sidebar__modal-close'>
               <i>

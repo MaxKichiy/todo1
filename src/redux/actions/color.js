@@ -2,12 +2,12 @@ import * as actionTypes from '../actions/actionTypes';
 
 import axios from 'axios';
 
-const setColors = (color) => ({
+const setColors = (colorsList) => ({
   type: actionTypes.SET_COLORS,
-  payload: color,
+  payload: colorsList,
 });
 
-export const fetchColors = () => (dispatch) => {
+export const fetchingColors = () => (dispatch) => {
   axios
     .get('http://localhost:3003/colors')
     .then(({ data }) => dispatch(setColors(data)))
