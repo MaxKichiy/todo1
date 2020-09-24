@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 import { changeTitle } from '../redux/actions/list';
 import { addTask } from '../redux/actions/tasks';
 import TasksList from './TasksList';
 
 const Main = ({ activeFolderIndex }) => {
+  const lists = useSelector((state) => state.list.list);
+  const title = lists.filter((el) => activeFolderIndex === el.id)[0];
+  const [setTitle, setSetTitle] = useState('');
+
   const dispatch = useDispatch();
+  const [isNewTask, setIsNewTask] = useState(false);
   const [newTask, setNewTask] = useState('');
   const [isChanging, setIsChanging] = useState(false);
   const tasks = useSelector((state) => state.tasks.tasks);
-  const lists = useSelector((state) => state.list.list);
   const colors = useSelector((state) => state.colors.colors);
-  const title = lists.filter((el) => activeFolderIndex === el.id)[0];
   const titleColor =
     title && colors.filter((el) => el.id === title.colorId)[0].hex;
-
-  const [setTitle, setSetTitle] = useState(title && title.name);
 
   const inputTitleHandler = (e) => {
     setSetTitle(e.target.value);
@@ -44,6 +46,8 @@ const Main = ({ activeFolderIndex }) => {
     dispatch(changeTitle(newObj, activeFolderIndex));
     setIsChanging(false);
   };
+
+  console.log(setTitle);
   return (
     <section className='page-main__main main'>
       <div className='main__wrapper'>
@@ -99,7 +103,7 @@ const Main = ({ activeFolderIndex }) => {
           </div>
         )}
         <TasksList activeId={activeFolderIndex} tasks={tasks} lists={lists} />
-        {activeFolderIndex && (
+        {activeFolderIndex && isNewTask && (
           <>
             <input
               value={newTask}
@@ -108,11 +112,53 @@ const Main = ({ activeFolderIndex }) => {
               type='text'
               placeholder='Текст задачи'
             />
-            <button onClick={onSubmitHandler} className='main-button button'>
+            <button
+              onClick={onSubmitHandler}
+              className={classNames('main-button', 'button', {
+                'button--disabled': !newTask,
+              })}
+            >
               Добавить
             </button>
-            <button className='main-button button button--grey'>Отмена</button>
+            <button
+              onClick={() => setIsNewTask(false)}
+              className='main-button button button--grey'
+            >
+              Отмена
+            </button>
           </>
+        )}
+        {!isNewTask && activeFolderIndex && (
+          <button
+            onClick={() => setIsNewTask(true)}
+            className='sidebar__button main__new-task'
+          >
+            <i>
+              <svg
+                width='12'
+                height='12'
+                viewBox='0 0 12 12'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M6 1V11'
+                  stroke='#868686'
+                  strokeWidth='1.5'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+                <path
+                  d='M1 6H11'
+                  stroke='#868686'
+                  strokeWidth='1.5'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              </svg>
+            </i>
+            Новая задача
+          </button>
         )}
       </div>
     </section>

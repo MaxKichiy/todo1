@@ -21,6 +21,16 @@ const setTitle = (newTitle) => ({
   payload: newTitle,
 });
 
+const setLoading = (status) => ({
+  type: actionTypes.SET_LOADING,
+  payload: status,
+});
+
+export const setActiveIndex = (index) => ({
+  type: actionTypes.SET_ACTIVE_INDEX,
+  payload: index,
+});
+
 export const fetchingList = () => (dispatch) => {
   axios
     .get('http://localhost:3003/lists')
@@ -29,15 +39,18 @@ export const fetchingList = () => (dispatch) => {
 };
 
 export const postListItem = (item) => (dispatch) => {
-  axios
-    .post('http://localhost:3003/lists', item)
-    .then(({ data }) => dispatch(addList(data)));
+  dispatch(setLoading(true));
+  axios.post('http://localhost:3003/lists', item).then(({ data }) => {
+    dispatch(addList(data));
+    dispatch(setLoading(false));
+  });
 };
 
 export const deleteListItem = (itemId) => (dispatch) => {
-  axios
-    .delete(`http://localhost:3003/lists/${itemId}`)
-    .then((res) => dispatch(removeList(itemId)));
+  axios.delete(`http://localhost:3003/lists/${itemId}`).then((res) => {
+    dispatch(removeList(itemId));
+    dispatch(setActiveIndex(itemId - 1));
+  });
 };
 
 export const changeTitle = (newTitle, titleId) => (dispatch) => {

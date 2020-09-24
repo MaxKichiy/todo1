@@ -7,4 +7,11 @@
   &:hover {
     background-color: darken(#4dd599, 10%);
   }
+  &--disabled {
+    background-color: #c1c1c1;
+    pointer-events: none;
+    &:hover {
+      background-color: #c1c1c1;
+    }
+  }
 }

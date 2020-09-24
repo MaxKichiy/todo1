@@ -11,6 +11,11 @@ const SidebarList = ({ onActiveHandler, activeFolderId }) => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const listColor = useSelector((state) => state.colors.colors);
 
+  const onDeleteItems = (id) => {
+    disapatch(deleteListItem(id));
+    onActiveHandler(1);
+  };
+
   const listDone =
     list &&
     list.map((el) => (
@@ -31,11 +36,8 @@ const SidebarList = ({ onActiveHandler, activeFolderId }) => {
         ></i>
         {el.name}
         {`(${tasks.filter((task) => task.listId === el.id).length})`}
-        <i
-          onClick={() => disapatch(deleteListItem(el.id))}
-          className='close-button'
-        >
-          <img src={close} alt='' />
+        <i className='close-button'>
+          <img onClick={() => onDeleteItems(el.id)} src={close} alt='' />
         </i>
       </li>
     ));

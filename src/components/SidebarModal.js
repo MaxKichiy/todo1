@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { postListItem } from '../redux/actions/list';
 import SidebarModalColors from './SidebarModalColors';
+import classNames from 'classnames';
 
 const SidebarModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const [inputField, setInputField] = useState('');
   const [activeColorId, setActiveColorId] = useState(1);
+
+  const isLoading = useSelector((state) => state.list.isLoading);
 
   const inputHandler = (e) => {
     setInputField(e.target.value);
@@ -43,7 +46,9 @@ const SidebarModal = ({ onClose }) => {
         />
         <button
           onClick={onSubmitHandler}
-          className='sidebar__modal-button button'
+          className={classNames('sidebar__modal-button', 'button', {
+            'button--disabled': isLoading || !inputField,
+          })}
         >
           Добавить
         </button>
