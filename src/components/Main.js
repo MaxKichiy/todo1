@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { changeTitle } from '../redux/actions/list';
@@ -26,6 +26,12 @@ const Main = ({ activeFolderIndex }) => {
     setNewTask(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onSubmitHandler();
+    }
+  };
+
   const onSubmitHandler = () => {
     if (!newTask) {
       return;
@@ -37,9 +43,13 @@ const Main = ({ activeFolderIndex }) => {
     };
     dispatch(addTask(finalTask));
     setNewTask('');
+    setIsNewTask(false);
   };
 
   const onSubmitTitleChange = () => {
+    if (!setTitle) {
+      return;
+    }
     const newObj = {
       name: setTitle,
     };
@@ -47,7 +57,6 @@ const Main = ({ activeFolderIndex }) => {
     setIsChanging(false);
   };
 
-  console.log(setTitle);
   return (
     <section className='page-main__main main'>
       <div className='main__wrapper'>
@@ -77,6 +86,7 @@ const Main = ({ activeFolderIndex }) => {
         {isChanging && (
           <div className='main__title-input'>
             <input
+              autoFocus
               value={setTitle}
               onChange={inputTitleHandler}
               className='text-input'
@@ -106,11 +116,13 @@ const Main = ({ activeFolderIndex }) => {
         {activeFolderIndex && isNewTask && (
           <>
             <input
+              autoFocus
               value={newTask}
               onChange={inputTaskHandler}
               className='text-input'
               type='text'
               placeholder='Текст задачи'
+              onKeyPress={handleKeyPress}
             />
             <button
               onClick={onSubmitHandler}

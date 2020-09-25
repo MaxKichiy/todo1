@@ -58,6 +58,10 @@
     .close-button {
       display: none;
     }
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
     &:hover {
       border-radius: 10%;
       background-color: lighten($color: #f4f6f8, $amount: 2%);

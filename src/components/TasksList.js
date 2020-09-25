@@ -25,7 +25,6 @@ const TasksList = ({ activeId, tasks, lists }) => {
       };
     }
     dispatch(taskDone(obj));
-    console.log(obj);
   };
 
   const taskList = (activeId ? tlist : tasks).map((el) => (

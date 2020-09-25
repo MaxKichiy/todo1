@@ -18,8 +18,16 @@ const SidebarModal = ({ onClose }) => {
   const colorHandler = (id) => {
     setActiveColorId(id);
   };
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onSubmitHandler();
+    }
+  };
 
   const onSubmitHandler = () => {
+    if (!inputField) {
+      return;
+    }
     const newFolder = {
       name: inputField,
       colorId: activeColorId,
@@ -31,9 +39,10 @@ const SidebarModal = ({ onClose }) => {
   };
 
   return (
-    <div className='sidebar__modal'>
+    <div className='sidebar__modal' onKeyPress={handleKeyPress}>
       <div className='sidebar__modal-wrapper'>
         <input
+          autoFocus
           value={inputField}
           onChange={inputHandler}
           className='text-input'
@@ -41,10 +50,12 @@ const SidebarModal = ({ onClose }) => {
           placeholder='Название папки'
         />
         <SidebarModalColors
+          handleKeyPress={handleKeyPress}
           colorHandler={colorHandler}
           activeColorId={activeColorId}
         />
         <button
+          type='submit'
           onClick={onSubmitHandler}
           className={classNames('sidebar__modal-button', 'button', {
             'button--disabled': isLoading || !inputField,
