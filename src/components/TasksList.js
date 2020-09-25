@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import close from '../assets/close.svg';
 import { deleteTask, taskDone } from '../redux/actions/tasks';
-const TasksList = ({ activeId, tasks, lists }) => {
+const TasksList = ({ activeId, tasks }) => {
   const tlist = tasks.filter((el) => activeId === el.listId);
   const dispatch = useDispatch();
 
@@ -46,4 +46,4 @@ const TasksList = ({ activeId, tasks, lists }) => {
   return <ul className='main__list'>{taskList}</ul>;
 };
 
-export default TasksList;
+export const TasksListMemo = React.memo(TasksList);

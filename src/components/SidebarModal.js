@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postListItem } from '../redux/actions/list';
-import SidebarModalColors from './SidebarModalColors';
+import SidebarModalColors, {
+  SidebarModalColorsMemo,
+} from './SidebarModalColors';
 import classNames from 'classnames';
 
 const SidebarModal = ({ onClose }) => {
@@ -49,7 +51,7 @@ const SidebarModal = ({ onClose }) => {
           type='text'
           placeholder='Название папки'
         />
-        <SidebarModalColors
+        <SidebarModalColorsMemo
           handleKeyPress={handleKeyPress}
           colorHandler={colorHandler}
           activeColorId={activeColorId}
@@ -84,4 +86,4 @@ const SidebarModal = ({ onClose }) => {
   );
 };
 
-export default SidebarModal;
+export const SidebarModalMemo = React.memo(SidebarModal);

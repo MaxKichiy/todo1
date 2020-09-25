@@ -45,4 +45,5 @@ const SidebarList = ({ onActiveHandler, activeFolderId }) => {
   return <ul className='sidebar__list '>{listDone}</ul>;
 };
 
-export default SidebarList;
+// export default SidebarList;
+export const SidebarListMemo = React.memo(SidebarList);

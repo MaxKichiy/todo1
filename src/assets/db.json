@@ -27,7 +27,7 @@
     },
     {
       "name": "Временное",
-      "colorId": 8,
+      "colorId": 1,
       "id": 8
     }
   ],
@@ -51,24 +51,6 @@
       "id": 16
     },
     {
-      "listId": 8,
-      "text": "Написать Higher Order func",
-      "completed": false,
-      "id": 18
-    },
-    {
-      "listId": 8,
-      "text": "reduce func",
-      "completed": false,
-      "id": 19
-    },
-    {
-      "listId": 8,
-      "text": "immutable.js",
-      "completed": false,
-      "id": 20
-    },
-    {
       "listId": 7,
       "text": "закрывать окно после добавления задачи",
       "completed": true,
@@ -81,30 +63,6 @@
       "id": 22
     },
     {
-      "listId": 8,
-      "text": "immer vs immutable",
-      "completed": false,
-      "id": 23
-    },
-    {
-      "listId": 8,
-      "text": "lodash",
-      "completed": false,
-      "id": 24
-    },
-    {
-      "listId": 8,
-      "text": "rem vs em",
-      "completed": false,
-      "id": 25
-    },
-    {
-      "listId": 8,
-      "text": "редактировать резюме",
-      "completed": false,
-      "id": 26
-    },
-    {
       "listId": 7,
       "text": "когда открываем инпут он активный",
       "completed": true,
@@ -115,6 +73,48 @@
       "text": "check for empty fields",
       "completed": false,
       "id": 28
+    },
+    {
+      "listId": 8,
+      "text": "rem vs em",
+      "completed": false,
+      "id": 29
+    },
+    {
+      "listId": 8,
+      "text": "lodash",
+      "completed": false,
+      "id": 30
+    },
+    {
+      "listId": 8,
+      "text": "immer vs immutable",
+      "completed": false,
+      "id": 31
+    },
+    {
+      "listId": 8,
+      "text": "immutable.js",
+      "completed": false,
+      "id": 32
+    },
+    {
+      "listId": 8,
+      "text": "reduce func",
+      "completed": false,
+      "id": 33
+    },
+    {
+      "listId": 8,
+      "text": "редактировать резюме",
+      "completed": false,
+      "id": 34
+    },
+    {
+      "listId": 8,
+      "text": "Написать Higher Order func",
+      "completed": false,
+      "id": 35
     }
   ],
   "colors": [

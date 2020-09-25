@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { changeTitle } from '../redux/actions/list';
 import { addTask } from '../redux/actions/tasks';
-import TasksList from './TasksList';
+import TasksList, { TasksListMemo } from './TasksList';
 
 const Main = ({ activeFolderIndex }) => {
   const lists = useSelector((state) => state.list.list);
@@ -27,8 +27,10 @@ const Main = ({ activeFolderIndex }) => {
   };
 
   const handleKeyPress = (e) => {
+    console.log(e.key);
     if (e.key === 'Enter') {
       onSubmitHandler();
+      onSubmitTitleChange();
     }
   };
 
@@ -55,6 +57,7 @@ const Main = ({ activeFolderIndex }) => {
     };
     dispatch(changeTitle(newObj, activeFolderIndex));
     setIsChanging(false);
+    setSetTitle('');
   };
 
   return (
@@ -92,6 +95,7 @@ const Main = ({ activeFolderIndex }) => {
               className='text-input'
               type='text'
               placeholder={title.name}
+              onKeyPress={handleKeyPress}
             />
             <i onClick={onSubmitTitleChange} className='main__title-confirm '>
               <svg
@@ -112,7 +116,11 @@ const Main = ({ activeFolderIndex }) => {
             </i>
           </div>
         )}
-        <TasksList activeId={activeFolderIndex} tasks={tasks} lists={lists} />
+        <TasksListMemo
+          activeId={activeFolderIndex}
+          tasks={tasks}
+          lists={lists}
+        />
         {activeFolderIndex && isNewTask && (
           <>
             <input
@@ -177,4 +185,4 @@ const Main = ({ activeFolderIndex }) => {
   );
 };
 
-export default Main;
+export const MainMemo = React.memo(Main);

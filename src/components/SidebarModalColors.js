@@ -19,23 +19,7 @@ const SidebarModalColors = ({ colorHandler, activeColorId }) => {
     </li>
   ));
 
-  return (
-    <ul className='sidebar__modal-colors'>
-      {colorsList}
-      {/* <li className='sidebar__modal-color'>
-        <i className='circle circle--green'></i>
-      </li>
-      <li className='sidebar__modal-color'>
-        <i className='circle circle--green'></i>
-      </li>
-      <li className='sidebar__modal-color'>
-        <i className='circle circle--blue'></i>
-      </li>
-      <li className='sidebar__modal-color'>
-        <i className='circle circle--rose'></i>
-      </li> */}
-    </ul>
-  );
+  return <ul className='sidebar__modal-colors'>{colorsList}</ul>;
 };
 
-export default SidebarModalColors;
+export const SidebarModalColorsMemo = React.memo(SidebarModalColors);

@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { fetchingColors } from '../redux/actions/color';
 import { fetchingList } from '../redux/actions/list';
 import { fetchingTasks } from '../redux/actions/tasks';
-import SidebarList from './SidebarList';
-import SidebarModal from './SidebarModal';
+import SidebarList, { SidebarListMemo } from './SidebarList';
+import SidebarModal, { SidebarModalMemo } from './SidebarModal';
 import classNames from 'classnames';
 
 const Sidebar = ({ activeFolderIndex, setActiveFolderIndex }) => {
@@ -52,7 +52,7 @@ const Sidebar = ({ activeFolderIndex, setActiveFolderIndex }) => {
           </i>
           Все задачи
         </p>
-        <SidebarList
+        <SidebarListMemo
           onActiveHandler={onActiveHandler}
           activeFolderId={activeFolderIndex}
         />
@@ -83,10 +83,10 @@ const Sidebar = ({ activeFolderIndex, setActiveFolderIndex }) => {
           </i>
           Добавить папку
         </button>
-        {openModal && <SidebarModal onClose={closeModalHandler} />}
+        {openModal && <SidebarModalMemo onClose={closeModalHandler} />}
       </div>
     </section>
   );
 };
 
-export default Sidebar;
+export const SidebarMemo = React.memo(Sidebar);

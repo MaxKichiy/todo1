@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Main from './components/Main';
-import Sidebar from './components/Sidebar';
+import Main, { MainMemo } from './components/Main';
+import Sidebar, { SidebarMemo } from './components/Sidebar';
 import { setActiveIndex } from './redux/actions/list';
 
 function App() {
@@ -13,13 +13,13 @@ function App() {
   };
   return (
     <main className='page-main'>
-      <Sidebar
+      <SidebarMemo
         activeFolderIndex={activeFolderIndex}
         setActiveFolderIndex={setActiveFolderIndex}
       />
-      <Main activeFolderIndex={activeFolderIndex} />
+      <MainMemo activeFolderIndex={activeFolderIndex} />
     </main>
   );
 }
 
-export default App;
+export const AppMemo = React.memo(App);
